@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dr.Omir - Personal Medical Portfolio and Educational Library">
+  <meta name="theme-color" content="#0b84d8">
+  <title>Dr.Omir | Medical Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <div class="container nav">
+    <a class="brand" href="#home">Dr.<span>Omir</span></a>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#resources">Resources</a>
+      <a href="#videos">Videos</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <div class="eyebrow"><span class="pulse-dot"></span> Medical Professional</div>
+      <h1>Dr.<span>Omir</span></h1>
+      <h2>Your Medical Specialty</h2>
+      <p>Welcome to my personal medical website — a professional space for my biography, education, certificates, research, medical resources and educational videos.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#about">About Me <span>→</span></a>
+        <a class="btn btn-light" href="#resources">Explore Resources</a>
+      </div>
+      <div class="quick-stats">
+        <div><strong>05+</strong><span>Years Experience</span></div>
+        <div><strong>20+</strong><span>Courses</span></div>
+        <div><strong>10+</strong><span>Certificates</span></div>
+      </div>
+    </div>
+    <div class="hero-card reveal">
+      <div class="portrait">
+        <img src="assets/doctor-placeholder.svg" alt="Dr. Omir placeholder portrait">
+      </div>
+      <div class="portrait-info">
+        <div>
+          <strong>Dr. Omir</strong>
+          <span>Medical Professional</span>
+        </div>
+        <div class="verified">✓</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span>ABOUT ME</span>
+      <h2>Medicine, learning &amp; professional growth.</h2>
+      <p>Replace this text with your own biography, specialty and professional story.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-panel blue-panel reveal">
+        <div class="medical-symbol">+</div>
+        <h3>My Medical Journey</h3>
+        <p>Use this area to explain what motivates you, your clinical interests and the kind of medical education or work you focus on.</p>
+      </div>
+      <div class="about-copy reveal">
+        <h3>I'm Dr. Omir</h3>
+        <p>Write your full professional biography here. You can mention your university, specialty, areas of interest, research activities, courses and conferences.</p>
+        <p>This website is also your personal educational library where visitors can find selected PDFs, documents, presentations and videos.</p>
+        <div class="info-list">
+          <div><span>Specialty</span><strong>Your Specialty</strong></div>
+          <div><span>Location</span><strong>Egypt</strong></div>
+          <div><span>Email</span><strong>your@email.com</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section soft" id="education">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span>MY JOURNEY</span>
+      <h2>Education &amp; Experience</h2>
+      <p>Add your real education, training and professional experience below.</p>
+    </div>
+    <div class="timeline">
+      <article class="timeline-item reveal">
+        <div class="timeline-date">2020 — 2025</div>
+        <div class="timeline-card"><h3>Medical Degree</h3><p>University Name · Degree / Faculty</p><small>Add details about your education here.</small></div>
+      </article>
+      <article class="timeline-item reveal">
+        <div class="timeline-date">2025 — Present</div>
+        <div class="timeline-card"><h3>Professional Experience</h3><p>Hospital / Institution · Department</p><small>Add your current professional role and responsibilities.</small></div>
+      </article>
+      <article class="timeline-item reveal">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-card"><h3>Medical Course / Training</h3><p>Course or Training Provider</p><small>Add relevant certifications, workshops or clinical training.</small></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="resources">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span>MEDICAL LIBRARY</span>
+      <h2>Resources &amp; Files</h2>
+      <p>Put your PDF, Word, PowerPoint, research and other educational files here.</p>
+    </div>
+
+    <div class="resource-tools reveal">
+      <input id="resourceSearch" type="search" placeholder="Search resources..." aria-label="Search resources">
+      <select id="resourceFilter" aria-label="Filter resources">
+        <option value="all">All categories</option>
+        <option value="pdf">PDF</option>
+        <option value="research">Research</option>
+        <option value="lecture">Lectures</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="resource-grid" id="resourceGrid">
+      <article class="resource-card reveal" data-title="Anatomy Lecture" data-category="lecture">
+        <div class="resource-icon">PDF</div>
+        <div class="resource-body">
+          <div class="resource-meta">LECTURE · PDF</div>
+          <h3>Anatomy Lecture</h3>
+          <p>Replace with a short description of this file.</p>
+          <div class="resource-actions">
+            <a class="btn btn-primary small" href="https://drive.google.com/" target="_blank" rel="noopener">Open File</a>
+            <a class="text-link" href="https://drive.google.com/" target="_blank" rel="noopener">Download ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="resource-card reveal" data-title="Medical Research" data-category="research">
+        <div class="resource-icon">DOC</div>
+        <div class="resource-body">
+          <div class="resource-meta">RESEARCH · DOCUMENT</div>
+          <h3>Medical Research</h3>
+          <p>Add the title and a short summary of your research.</p>
+          <div class="resource-actions">
+            <a class="btn btn-primary small" href="https://drive.google.com/" target="_blank" rel="noopener">Open File</a>
+            <a class="text-link" href="https://drive.google.com/" target="_blank" rel="noopener">Download ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="resource-card reveal" data-title="Study Materials" data-category="other">
+        <div class="resource-icon">FILE</div>
+        <div class="resource-body">
+          <div class="resource-meta">EDUCATION · FILE</div>
+          <h3>Study Materials</h3>
+          <p>Use this card for notes, presentations or useful study material.</p>
+          <div class="resource-actions">
+            <a class="btn btn-primary small" href="https://drive.google.com/" target="_blank" rel="noopener">Open File</a>
+            <a class="text-link" href="https://drive.google.com/" target="_blank" rel="noopener">Download ↗</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="empty-state" id="emptyState">No matching resources found.</div>
+  </div>
+</section>
+
+<section class="section soft" id="videos">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span>VIDEO LIBRARY</span>
+      <h2>Medical Videos</h2>
+      <p>Connect your YouTube lectures, educational videos and presentations here.</p>
+    </div>
+    <div class="video-grid">
+      <article class="video-card reveal">
+        <a class="video-cover" href="https://www.youtube.com/" target="_blank" rel="noopener"><span>▶</span></a>
+        <div class="video-content"><div class="resource-meta">VIDEO · YOUTUBE</div><h3>Medical Lecture 01</h3><p>Add your video description here.</p><a class="text-link" href="https://www.youtube.com/" target="_blank" rel="noopener">Watch video ↗</a></div>
+      </article>
+      <article class="video-card reveal">
+        <a class="video-cover" href="https://www.youtube.com/" target="_blank" rel="noopener"><span>▶</span></a>
+        <div class="video-content"><div class="resource-meta">VIDEO · YOUTUBE</div><h3>Medical Lecture 02</h3><p>Add your video description here.</p><a class="text-link" href="https://www.youtube.com/" target="_blank" rel="noopener">Watch video ↗</a></div>
+      </article>
+      <article class="video-card reveal">
+        <a class="video-cover" href="https://www.youtube.com/" target="_blank" rel="noopener"><span>▶</span></a>
+        <div class="video-content"><div class="resource-meta">VIDEO · YOUTUBE</div><h3>Medical Education</h3><p>Add your video description here.</p><a class="text-link" href="https://www.youtube.com/" target="_blank" rel="noopener">Watch video ↗</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="certificates">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span>ACHIEVEMENTS</span>
+      <h2>Certificates &amp; Achievements</h2>
+      <p>Add your certificates, awards, conferences and professional achievements.</p>
+    </div>
+    <div class="certificate-grid">
+      <article class="certificate-card reveal"><div class="certificate-image">🎓</div><h3>Medical Certificate</h3><p>Certificate name · 2024</p></article>
+      <article class="certificate-card reveal"><div class="certificate-image">🏆</div><h3>Professional Achievement</h3><p>Achievement details · 2025</p></article>
+      <article class="certificate-card reveal"><div class="certificate-image">📜</div><h3>Conference</h3><p>Conference participation · 2025</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div class="contact-copy">
+        <span>CONTACT</span>
+        <h2>Let's connect.</h2>
+        <p>Update the information below with your real contact details and social links.</p>
+        <div class="contact-links">
+          <a href="mailto:your@email.com"><b>✉</b><span>your@email.com</span></a>
+          <a href="https://wa.me/201000000000" target="_blank" rel="noopener"><b>◉</b><span>WhatsApp</span></a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener"><b>in</b><span>LinkedIn</span></a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener"><b>▶</b><span>YouTube</span></a>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <label>Name<input id="contactName" required type="text" placeholder="Your name"></label>
+        <label>Email<input id="contactEmail" required type="email" placeholder="your@email.com"></label>
+        <label>Message<textarea id="contactMessage" required placeholder="Write your message..."></textarea></label>
+        <button class="btn btn-primary" type="submit">Send via WhatsApp →</button>
+        <small>Replace the WhatsApp number in <code>script.js</code>.</small>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div><a class="brand footer-brand" href="#top">Dr.<span>Omir</span></a><p>Personal Medical Portfolio &amp; Educational Library</p></div>
+    <div class="footer-links"><a href="#about">About</a><a href="#resources">Resources</a><a href="#videos">Videos</a><a href="#contact">Contact</a></div>
+  </div>
+  <div class="container copyright">© <span id="year"></span> Dr.Omir. All rights reserved.</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
