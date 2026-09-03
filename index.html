@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dr.Omir - Personal Medical Portfolio and Educational Learning Platform">
+  <meta name="theme-color" content="#0b84d8">
+  <title>Dr.Omir | Medical Learning Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+<header class="site-header" id="top">
+  <div class="container nav">
+    <a class="brand" href="#home">Dr.<span>Omir</span></a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#resources">Resources</a>
+      <a href="#videos">Videos</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+      <a href="Pages/profile.html" id="profileLink" class="nav-account-link" hidden>Profile</a>
+      <a href="Pages/admin.html" id="dashboardLink" class="nav-dashboard-link" hidden>Dashboard</a>
+      <button type="button" id="authOpen" class="admin-login-btn">Sign In</button>
+      <button type="button" id="logoutButton" class="nav-logout-btn" hidden>Logout</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <div class="eyebrow"><span class="pulse-dot"></span> Medical Learning Platform</div>
+      <h1>Dr.<span>Omir</span></h1>
+      <h2>Medicine, learning &amp; professional growth.</h2>
+      <p>Welcome to a medical education platform for organized resources, lectures, research, videos and professional learning.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#resources">Explore Resources <span>→</span></a>
+        <button class="btn btn-light" type="button" id="heroSignIn">Sign In / Sign Up</button>
+      </div>
+      <div class="quick-stats">
+        <div><strong>05+</strong><span>Years Experience</span></div>
+        <div><strong>20+</strong><span>Courses</span></div>
+        <div><strong>10+</strong><span>Certificates</span></div>
+      </div>
+    </div>
+    <div class="hero-card reveal">
+      <div class="portrait"><img src="assets/doctor-placeholder.svg" alt="Dr. Omir placeholder portrait"></div>
+      <div class="portrait-info">
+        <div><strong>Dr. Omir</strong><span>Medical Professional</span></div>
+        <div class="verified">✓</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span>ABOUT ME</span>
+      <h2>Medicine, learning &amp; professional growth.</h2>
+      <p>Replace this text with your real biography, specialty and professional story.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-panel blue-panel reveal">
+        <div class="medical-symbol">+</div>
+        <h3>My Medical Journey</h3>
+        <p>Use this area to explain your clinical interests, medical education and professional goals.</p>
+      </div>
+      <div class="about-copy reveal">
+        <h3>I'm Dr. Omir</h3>
+        <p>This platform is also a structured educational library where registered users can keep their learning profile and follow their activity.</p>
+        <p>Resources are organized by categories created and managed from the Admin Dashboard.</p>
+        <div class="info-list">
+          <div><span>Specialty</span><strong>Your Specialty</strong></div>
+          <div><span>Location</span><strong>Egypt</strong></div>
+          <div><span>Email</span><strong>your@email.com</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section soft" id="education">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span>MY JOURNEY</span>
+      <h2>Education &amp; Experience</h2>
+      <p>Add your real education, training and professional experience below.</p>
+    </div>
+    <div class="timeline">
+      <article class="timeline-item reveal"><div class="timeline-date">2020 — 2025</div><div class="timeline-card"><h3>Medical Degree</h3><p>University Name · Degree / Faculty</p><small>Add details about your education here.</small></div></article>
+      <article class="timeline-item reveal"><div class="timeline-date">2025 — Present</div><div class="timeline-card"><h3>Professional Experience</h3><p>Hospital / Institution · Department</p><small>Add your current professional role and responsibilities.</small></div></article>
+      <article class="timeline-item reveal"><div class="timeline-date">2024</div><div class="timeline-card"><h3>Medical Course / Training</h3><p>Course or Training Provider</p><small>Add relevant certifications, workshops or clinical training.</small></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="resources">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span>MEDICAL LIBRARY</span>
+      <h2>Resources &amp; Files</h2>
+      <p>Browse resources published by the administrator and organized by custom categories.</p>
+    </div>
+    <div class="resource-tools reveal">
+      <input id="resourceSearch" type="search" placeholder="Search resources..." aria-label="Search resources">
+      <select id="resourceFilter" aria-label="Filter resources"><option value="all">All categories</option></select>
+    </div>
+    <p id="resourceLoading" class="resource-loading">Loading resources...</p>
+    <div class="resource-grid" id="resourceGrid"></div>
+    <div class="resource-pagination public-pagination" id="resourcePagination"></div>
+    <div class="empty-state" id="emptyState">No matching resources found.</div>
+  </div>
+</section>
+
+<section class="section soft" id="videos">
+  <div class="container">
+    <div class="section-heading reveal"><span>VIDEO LIBRARY</span><h2>Medical Videos</h2><p>Browse educational videos published by the administrator.</p></div>
+    <div class="video-grid" id="publicVideoGrid"></div>
+    <div class="resource-pagination public-pagination" id="videoPagination"></div>
+    <div class="empty-state" id="videoEmpty">No videos available yet.</div>
+  </div>
+</section>
+
+<section class="section" id="certificates">
+  <div class="container">
+    <div class="section-heading reveal"><span>ACHIEVEMENTS</span><h2>Certificates &amp; Achievements</h2><p>Professional certificates, awards and conferences.</p></div>
+    <div class="certificate-grid" id="publicCertificateGrid"></div>
+    <div class="empty-state" id="certificateEmpty">No certificates available yet.</div>
+  </div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div class="contact-copy"><span>CONTACT</span><h2>Let's connect.</h2><p>Update these details with your real contact information.</p><div class="contact-links"><a href="mailto:your@email.com"><b>✉</b><span>your@email.com</span></a><a href="https://wa.me/201000000000" target="_blank" rel="noopener"><b>◉</b><span>WhatsApp</span></a><a href="https://www.linkedin.com/" target="_blank" rel="noopener"><b>in</b><span>LinkedIn</span></a><a href="https://www.youtube.com/" target="_blank" rel="noopener"><b>▶</b><span>YouTube</span></a></div></div>
+      <form class="contact-form" id="contactForm"><label>Name<input id="contactName" required type="text" placeholder="Your name"></label><label>Email<input id="contactEmail" required type="email" placeholder="your@email.com"></label><label>Message<textarea id="contactMessage" required placeholder="Write your message..."></textarea></label><button class="btn btn-primary" type="submit">Send via WhatsApp →</button><small>WhatsApp number can be changed in <code>js/script.js</code>.</small></form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner"><div><a class="brand footer-brand" href="#top">Dr.<span>Omir</span></a><p>Medical Portfolio &amp; Educational Learning Platform</p></div><div class="footer-links"><a href="#about">About</a><a href="#resources">Resources</a><a href="#videos">Videos</a><a href="#contact">Contact</a></div></div>
+  <div class="container copyright">© <span id="year"></span> Dr.Omir. All rights reserved.</div>
+</footer>
+
+<div id="authModal" class="auth-modal" aria-hidden="true">
+  <div class="auth-modal-box" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button type="button" id="authClose" class="auth-close" aria-label="Close">×</button>
+    <div class="auth-modal-brand"><span class="brand-dr">Dr.</span><span class="brand-omir">Omir</span><span class="brand-platform">MEDICAL LEARNING PLATFORM</span></div>
+    <div class="auth-tabs"><button type="button" id="authTabLogin" class="active">Sign In</button><button type="button" id="authTabRegister">Sign Up</button></div>
+    <div class="auth-heading"><h2 id="authTitle">Welcome back</h2><p id="authSubtitle">Sign in securely to continue your medical learning journey.</p></div>
+    <form id="authForm" class="auth-form" novalidate>
+      <div id="registerFields" class="auth-register-fields hidden"><label>Full name<input id="authFullName" type="text" placeholder="Your full name" autocomplete="name"></label></div>
+      <label>Email address<input id="authEmail" type="email" placeholder="you@example.com" autocomplete="email" required></label>
+      <div id="authPasswordGroup">
+        <label>Password<span class="auth-password-wrap"><input id="authPassword" type="password" placeholder="Enter your password" autocomplete="current-password" required><button id="authTogglePassword" class="password-toggle" type="button" aria-label="Show password" title="Show password"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.1 12s3.6-6 9.9-6 9.9 6 9.9 6-3.6 6-9.9 6-9.9-6-9.9-6Z"></path><circle cx="12" cy="12" r="2.6"></circle></svg></button></span></label>
+        <div id="authPasswordStrength" class="password-strength hidden" aria-live="polite"><div class="password-rules"><div id="authRuleLength" class="password-rule"><span class="rule-icon"></span><span>At least 8 characters</span></div><div id="authRuleLower" class="password-rule"><span class="rule-icon"></span><span>One lowercase letter</span></div><div id="authRuleUpper" class="password-rule"><span class="rule-icon"></span><span>One uppercase letter</span></div><div id="authRuleNumber" class="password-rule"><span class="rule-icon"></span><span>One number</span></div><div id="authRuleSymbol" class="password-rule"><span class="rule-icon"></span><span>One special character</span></div></div><div class="strength-summary"><div class="strength-track"><span id="authPasswordStrengthBar"></span></div><strong id="authPasswordStrengthText">Password strength</strong></div></div>
+      </div>
+      <div id="authConfirmGroup" class="hidden"><label>Confirm password<span class="auth-password-wrap"><input id="authConfirmPassword" type="password" placeholder="Repeat your password" autocomplete="new-password"><button id="authToggleConfirmPassword" class="password-toggle" type="button" aria-label="Show password" title="Show password"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.1 12s3.6-6 9.9-6 9.9 6 9.9 6-3.6 6-9.9 6-9.9-6-9.9-6Z"></path><circle cx="12" cy="12" r="2.6"></circle></svg></button></span></label></div>
+      <a id="authForgotLink" class="forgot-link" href="#">Forgot password?</a>
+      <a id="authRecoveryBack" class="forgot-link hidden" href="#">← Back to Sign In</a>
+      <button type="submit" id="authSubmit" class="btn btn-primary auth-submit">Sign In</button>
+      <div id="authDivider" class="auth-divider"><span>or continue with</span></div>
+      <button type="button" id="googleSignIn" class="google-circle-button" aria-label="Continue with Google" title="Continue with Google"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.6c-.5 2.8-2.1 5.1-4.5 6.7v5.7h7.3c4.3-4 7.1-9.9 7.1-16.4Z"/><path fill="#34A853" d="M24 46.9c6.1 0 11.2-2 14.9-5.9l-7.3-5.7c-2 1.4-4.5 2.2-7.6 2.2-6.8 0-12.3-4.3-14.1-10.1H2.6v5.9C6.6 40.8 14.6 46.9 24 46.9Z"/><path fill="#FBBC05" d="M9.9 25.2c-.5-1.5-.8-3.1-.8-4.8s.3-3.3.8-4.8V9.7H2.6a23.9 23.9 0 0 0 0 21.4l7.3-5.9Z"/><path fill="#EA4335" d="M24 9.6c3.3 0 6.2 1.1 8.5 3.3l6.4-6.4C35.2 2.4 29.9 0 24 0 14.6 0 6.6 6.1 2.6 14.8l7.3 5.9C11.7 13.9 17.7 9.6 24 9.6Z"/></svg></button>
+      <p id="authMessage" class="auth-message" aria-live="polite"></p>
+      <p id="authSecurityNote" class="auth-security-note">♧ Protected by Firebase Authentication. Never share your password or verification codes.</p>
+    </form>
+    <section id="authVerification" class="verification-panel hidden">
+      <div class="verification-icon">✓</div><h2>Check your email</h2><p>We sent a verification link to <strong id="authVerificationEmail">your email</strong>.</p><p class="verification-hint">Verify your email to activate secure account access.</p>
+      <p id="authVerificationMessage" class="auth-message" aria-live="polite"></p><div class="verification-actions"><button id="authIveVerified" class="btn btn-primary" type="button">I've verified my email</button><button id="authResendVerification" class="btn btn-light" type="button">Resend email</button></div>
+    </section>
+  </div>
+</div>
+
+<script type="module" src="js/script.js"></script>
+</body>
+</html>

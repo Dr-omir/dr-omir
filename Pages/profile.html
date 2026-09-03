@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dr.Omir user profile">
+  <title>Dr.Omir | Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="../css/profile.css">
+</head>
+<body class="profile-page">
+  <main class="profile-shell">
+    <header class="profile-topbar">
+      <a class="brand" href="../index.html">Dr.<span>Omir</span></a>
+      <div class="profile-actions"><a href="../index.html" class="profile-back">← Website</a><button id="profileLogout" class="profile-logout">Logout</button></div>
+    </header>
+
+    <section class="profile-hero">
+      <div class="profile-avatar" id="profileAvatar">U</div>
+      <div><span class="profile-label">MY ACCOUNT</span><h1 id="profileHeading">Your Profile</h1><p id="profileRole">Student / User</p></div>
+    </section>
+
+    <section class="profile-stats-grid">
+      <article><strong id="statLectures">0</strong><span>Lectures opened</span></article>
+      <article><strong id="statResources">0</strong><span>Resources opened</span></article>
+      <article><strong id="statVideos">0</strong><span>Videos watched</span></article>
+      <article><strong id="statActivities">0</strong><span>Learning activities</span></article>
+    </section>
+
+    <section class="profile-card progress-card">
+      <div class="profile-section-heading"><span>LEARNING PROGRESS</span><h2>Your progress</h2><p>Your progress is calculated from activity recorded on the platform.</p></div>
+      <div class="progress-summary"><strong id="progressPercent">0%</strong><span id="progressText">Keep learning to build your progress.</span></div>
+      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+    </section>
+
+    <section class="profile-card">
+      <div class="profile-section-heading"><span>PROFILE INFORMATION</span><h2>Personal information</h2><p>Keep your learning profile up to date.</p></div>
+      <form id="profileForm" class="profile-form">
+        <div class="profile-form-grid">
+          <label>Full name<input id="profileName" type="text" required></label>
+          <label>Email<input id="profileEmail" type="email" disabled></label>
+          <label>University / Institution<input id="profileUniversity" type="text" placeholder="Your university"></label>
+          <label>Specialty<input id="profileSpecialty" type="text" placeholder="Your specialty"></label>
+        </div>
+        <label>Profile photo URL<input id="profilePhotoURL" type="url" placeholder="https://..."><small>For now use an external image URL. Firebase Storage can be added later if needed.</small></label>
+        <label>Bio<textarea id="profileBio" rows="5" placeholder="Tell us a little about yourself..."></textarea></label>
+        <button id="profileSave" class="btn btn-primary" type="submit">Save Profile</button>
+        <p id="profileMessage" class="profile-message" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <script type="module" src="../js/profile.js"></script>
+</body>
+</html>

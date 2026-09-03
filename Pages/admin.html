@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dr.Omir Admin Dashboard">
+  <title>Dr.Omir | Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin-resources.css">
+</head>
+<body>
+<main class="admin-page">
+  <div class="container">
+    <header class="admin-topbar">
+      <div><span class="admin-label">DR.OMIR</span><h1>Admin Dashboard</h1><p>Manage users, categories and educational content.</p></div>
+      <div class="admin-topbar-actions"><a href="../index.html" class="admin-back-btn">← Website</a><button id="logoutBtn" class="admin-logout-btn" type="button">Logout</button></div>
+    </header>
+
+    <nav class="admin-dashboard-nav" aria-label="Dashboard sections">
+      <a class="active" href="#analytics">Overview</a>
+      <a href="#content">Content</a>
+      <a href="#profile">Profile</a>
+      <a href="#settings">Settings</a>
+    </nav>
+
+    <section class="admin-overview-grid">
+      <article class="admin-overview-card"><span>📚</span><strong id="overviewResources">0</strong><small>Resources</small></article>
+      <article class="admin-overview-card"><span>📁</span><strong id="overviewCategories">0</strong><small>Categories</small></article>
+      <article class="admin-overview-card"><span>🎥</span><strong id="overviewVideos">0</strong><small>Videos</small></article>
+      <article class="admin-overview-card"><span>🏆</span><strong id="overviewCertificates">0</strong><small>Certificates</small></article>
+      <article class="admin-overview-card analytics-card"><span>👥</span><strong id="overviewVisitors">0</strong><small>Visitors <em id="overviewVisitorsDelta">last 30 days</em></small></article>
+      <article class="admin-overview-card analytics-card"><span>⏱</span><strong id="overviewAvgTime">0m</strong><small>Avg. time on site</small></article>
+    </section>
+
+    <section id="analytics" class="analytics-dashboard-section">
+      <div class="analytics-heading">
+        <div>
+          <span class="admin-resources-label">SITE INTELLIGENCE</span>
+          <h2>Website Analytics</h2>
+          <p>Real visitor and engagement data collected from the Dr.Omir website.</p>
+        </div>
+        <div class="analytics-range" role="group" aria-label="Analytics period">
+          <button type="button" data-days="7">7D</button>
+          <button type="button" data-days="30" class="active">30D</button>
+          <button type="button" data-days="90">90D</button>
+          <button type="button" id="refreshAnalyticsBtn">↻</button>
+        </div>
+      </div>
+
+      <div class="analytics-kpis">
+        <article class="analytics-kpi"><span class="analytics-kpi-icon">👥</span><div><small>Unique visitors</small><strong id="analyticsVisitors">0</strong><em id="analyticsVisitorsNote">No data yet</em></div></article>
+        <article class="analytics-kpi"><span class="analytics-kpi-icon">◉</span><div><small>Sessions</small><strong id="analyticsSessions">0</strong><em>Actual sessions</em></div></article>
+        <article class="analytics-kpi"><span class="analytics-kpi-icon">▣</span><div><small>Page views</small><strong id="analyticsPageViews">0</strong><em>All tracked pages</em></div></article>
+        <article class="analytics-kpi"><span class="analytics-kpi-icon">⌛</span><div><small>Avg. time on site</small><strong id="analyticsAvgTime">0m 0s</strong><em>Measured sessions</em></div></article>
+        <article class="analytics-kpi"><span class="analytics-kpi-icon">↗</span><div><small>Content opens</small><strong id="analyticsContentOpens">0</strong><em>Resources + videos</em></div></article>
+        <article class="analytics-kpi"><span class="analytics-kpi-icon">⚡</span><div><small>Active sessions</small><strong id="analyticsActive">0</strong><em>Heartbeat in last 5 min</em></div></article>
+      </div>
+
+      <div class="analytics-main-grid">
+        <article class="analytics-panel analytics-chart-panel">
+          <div class="analytics-panel-header"><div><h3>Visitors &amp; page views</h3><p>Daily traffic for the selected period.</p></div><span id="analyticsChartStatus">Waiting for data</span></div>
+          <div class="analytics-chart-wrap"><canvas id="trafficChart" height="250" aria-label="Visitors and page views chart"></canvas><div id="analyticsNoData" class="analytics-no-data">No analytics data yet. Open the website once to start collecting real metrics.</div></div>
+        </article>
+
+        <article class="analytics-panel analytics-engagement-panel">
+          <div class="analytics-panel-header"><div><h3>Engagement</h3><p>What visitors are opening.</p></div></div>
+          <div class="engagement-donut" id="engagementDonut"><div><strong id="engagementTotal">0</strong><span>opens</span></div></div>
+          <div id="engagementLegend" class="engagement-legend"></div>
+        </article>
+      </div>
+
+      <div class="analytics-lower-grid">
+        <article class="analytics-panel"><div class="analytics-panel-header"><div><h3>Top content</h3><p>Most opened educational content.</p></div></div><div id="topContentList" class="top-content-list"><div class="analytics-empty-row">No content opens recorded yet.</div></div></article>
+        <article class="analytics-panel"><div class="analytics-panel-header"><div><h3>Traffic sources</h3><p>Where sessions started.</p></div></div><div id="trafficSourcesList" class="source-list"><div class="analytics-empty-row">No source data yet.</div></div></article>
+      </div>
+
+      <div class="analytics-note"><span>✓</span><div><strong>Real-data mode</strong><p>Numbers are calculated from Firestore analytics events generated by the live website. No sample or fake statistics are inserted.</p></div></div>
+    </section>
+
+    <section id="profile" class="admin-profile-summary">
+      <div><span class="admin-resources-label">ADMIN PROFILE</span><h2 id="adminProfileName">Dr. Omir</h2><p id="adminProfileEmail">Loading admin profile...</p></div>
+      <span class="admin-role-badge">ADMIN</span>
+    </section>
+
+    <section class="admin-profile-editor-section">
+      <div class="admin-content-header">
+        <div>
+          <span class="admin-resources-label">ADMIN PROFILE</span>
+          <h2>Profile Settings</h2>
+          <p>Update the administrator profile shown across the dashboard.</p>
+        </div>
+      </div>
+      <form id="adminProfileForm" class="admin-form admin-profile-form" novalidate>
+        <div class="form-group">
+          <label for="adminProfileFullName">Full Name *</label>
+          <input id="adminProfileFullName" type="text" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label for="adminProfileEmailInput">Email</label>
+          <input id="adminProfileEmailInput" type="email" disabled>
+        </div>
+        <div class="form-group">
+          <label for="adminProfileUniversity">University / Institution</label>
+          <input id="adminProfileUniversity" type="text" placeholder="University or institution">
+        </div>
+        <div class="form-group">
+          <label for="adminProfileSpecialty">Specialty</label>
+          <input id="adminProfileSpecialty" type="text" placeholder="Medical specialty">
+        </div>
+        <div class="form-group admin-profile-full-width">
+          <label for="adminProfilePhotoURL">Profile Photo URL</label>
+          <input id="adminProfilePhotoURL" type="url" placeholder="https://...">
+        </div>
+        <div class="form-group admin-profile-full-width">
+          <label for="adminProfileBio">Bio</label>
+          <textarea id="adminProfileBio" rows="4" placeholder="Short professional biography"></textarea>
+        </div>
+        <div class="admin-profile-form-actions">
+          <button id="adminProfileSave" type="submit" class="admin-action-btn">Save Admin Profile</button>
+          <span id="adminProfileMessage" class="admin-profile-message" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+
+    <section id="content" class="category-management-section">
+      <div class="category-header"><div><span class="admin-resources-label">ORGANIZATION</span><h2>Category Management</h2><p>Create custom categories and use them to organize resources and videos.</p></div><button type="button" id="showCategoryFormBtn" class="category-create-btn">+ Create Category</button></div>
+      <div id="categoryFormWrapper" class="category-form-wrapper" hidden>
+        <form id="categoryForm" class="category-form" novalidate>
+          <div class="form-group"><label for="categoryName">Category Name *</label><input id="categoryName" type="text" placeholder="Example: Cardiology" autocomplete="off"></div>
+          <div class="form-group"><label for="categoryDescription">Description</label><textarea id="categoryDescription" rows="3" placeholder="Example: Cardiology lectures and resources"></textarea></div>
+          <div class="form-group"><label for="categoryType">Category Type *</label><select id="categoryType"><option value="resource">Resources</option><option value="video">Videos</option><option value="both">Resources + Videos</option></select><small>Choose where this category can be used. Video categories will appear only in the Video form.</small></div>
+          <div class="category-form-actions"><button id="createCategoryBtn" type="submit" class="admin-action-btn">Create Category</button><button id="cancelCategoryBtn" type="button" class="category-cancel-btn">Cancel</button></div>
+        </form>
+      </div>
+      <div id="categoriesLoading" class="resources-loading">Loading categories...</div>
+      <div id="categoriesError" class="resources-error" hidden></div>
+      <div id="categoriesEmpty" class="resources-empty" hidden><div class="resources-empty-icon">📁</div><h3>No Categories</h3><p>Create your first category.</p></div>
+      <div id="categoriesList" class="categories-list"></div>
+    </section>
+
+    <section id="settings" class="admin-form-section">
+      <div class="admin-section-header"><h2>Add New Resource</h2><p>Add a file/link and assign it to a custom category.</p></div>
+      <form id="resourceForm" class="admin-form" novalidate>
+        <div class="form-group"><label for="resourceTitle">Resource Title *</label><input id="resourceTitle" type="text" placeholder="Example: Anatomy Lecture 1"></div>
+        <div class="form-group"><label for="resourceCategory">Category *</label><select id="resourceCategory"><option value="">Select category</option></select></div>
+        <div class="form-group"><label for="resourceDescription">Description *</label><textarea id="resourceDescription" rows="5" placeholder="Write a short description..."></textarea></div>
+        <div class="form-group"><label for="resourceUrl">File / Resource URL *</label><input id="resourceUrl" type="url" placeholder="https://drive.google.com/..."><small>Use a public external file or website link.</small></div>
+        <button id="addResourceBtn" type="submit" class="admin-action-btn">Add Resource</button>
+      </form>
+    </section>
+
+    <section class="admin-resources-section">
+      <div class="admin-resources-header"><div><span class="admin-resources-label">FIRESTORE</span><h2>Resources Management</h2><p>Open a category to view, search, paginate, edit or delete resources.</p></div><div class="admin-resources-actions"><div id="resourceCount" class="resource-count">0 Resources</div><button id="refreshResourcesBtn" type="button" class="refresh-resources-btn">↻ Refresh</button></div></div>
+      <div id="resourcesLoading" class="resources-loading">Loading resources...</div><div id="resourcesError" class="resources-error" hidden></div><div id="resourcesEmpty" class="resources-empty" hidden></div><div id="adminResourcesList" class="admin-resources-list"></div>
+    </section>
+
+    <section class="admin-content-management-section">
+      <div class="admin-content-header"><div><span class="admin-resources-label">VIDEO LIBRARY</span><h2>Video Management</h2><p>Add educational videos and organize them by category.</p></div></div>
+      <form id="videoForm" class="admin-form content-form" novalidate>
+        <div class="form-group"><label for="videoTitle">Video Title *</label><input id="videoTitle" type="text" placeholder="Example: Cardiology Lecture 1"></div>
+        <div class="form-group"><label for="videoCategory">Category *</label><select id="videoCategory"><option value="">Select category</option></select></div>
+        <div class="form-group"><label for="videoDescription">Description *</label><textarea id="videoDescription" rows="3" placeholder="Video description"></textarea></div>
+        <div class="form-group"><label for="videoUrl">Video URL *</label><input id="videoUrl" type="url" placeholder="https://www.youtube.com/watch?v=..."></div>
+        <button id="addVideoBtn" type="submit" class="admin-action-btn">Add Video</button>
+      </form>
+      <div id="videosLoading" class="resources-loading">Loading videos...</div><div id="videosError" class="resources-error" hidden></div><div id="adminVideosList" class="admin-content-list"></div>
+    </section>
+
+    <section class="admin-content-management-section">
+      <div class="admin-content-header"><div><span class="admin-resources-label">ACHIEVEMENTS</span><h2>Certificate Management</h2><p>Manage certificates, awards, conferences and achievements.</p></div></div>
+      <form id="certificateForm" class="admin-form content-form" novalidate>
+        <div class="form-group"><label for="certificateTitle">Title *</label><input id="certificateTitle" type="text" placeholder="Example: Advanced ECG Course"></div>
+        <div class="form-group"><label for="certificateDate">Date</label><input id="certificateDate" type="date"></div>
+        <div class="form-group"><label for="certificateDescription">Description *</label><textarea id="certificateDescription" rows="3" placeholder="Certificate or achievement details"></textarea></div>
+        <div class="form-group"><label for="certificateImageUrl">Image URL</label><input id="certificateImageUrl" type="url" placeholder="https://..."></div>
+        <div class="form-group"><label for="certificateUrl">Certificate / Verification URL</label><input id="certificateUrl" type="url" placeholder="https://..."></div>
+        <button id="addCertificateBtn" type="submit" class="admin-action-btn">Add Certificate</button>
+      </form>
+      <div id="certificatesLoading" class="resources-loading">Loading certificates...</div><div id="certificatesError" class="resources-error" hidden></div><div id="adminCertificatesList" class="admin-content-list"></div>
+    </section>
+  </div>
+</main>
+
+<div id="resourcePopup" class="resource-popup" aria-hidden="true"><div class="resource-popup-box" role="dialog" aria-modal="true" aria-labelledby="popupTitle"><button type="button" id="closeResourcePopup" class="resource-popup-close" aria-label="Close">×</button><div id="popupIcon" class="resource-popup-icon">✓</div><h2 id="popupTitle">DONE</h2><p id="popupSubtitle">Operation completed successfully.</p><div id="popupDetails" class="resource-popup-details"></div><div id="popupTimer" class="resource-popup-timer">Closing in 3 seconds...</div></div></div>
+
+<div id="resourceEditModal" class="resource-edit-modal" aria-hidden="true"><div class="resource-edit-modal-box" role="dialog" aria-modal="true"><div class="resource-edit-modal-header"><span>RESOURCE MANAGEMENT</span><h2>Edit Resource</h2><p>Update the resource information.</p></div><form id="resourceEditForm" class="resource-edit-form" novalidate><div class="edit-form-group"><label for="editResourceTitle">Resource Title *</label><input id="editResourceTitle" type="text"></div><div class="edit-form-group"><label for="editResourceCategory">Category *</label><select id="editResourceCategory"></select></div><div class="edit-form-group"><label for="editResourceDescription">Description *</label><textarea id="editResourceDescription" rows="5"></textarea></div><div class="edit-form-group"><label for="editResourceUrl">File / Resource URL *</label><input id="editResourceUrl" type="url"></div><div class="resource-edit-form-actions"><button type="button" id="cancelResourceEdit" class="resource-edit-cancel">Cancel</button><button type="submit" class="resource-edit-save">Save Changes</button></div></form></div></div>
+
+<div id="resourceDeleteModal" class="resource-delete-modal" aria-hidden="true"><div class="resource-delete-modal-box" role="dialog" aria-modal="true"><div class="delete-warning-icon">!</div><h2>Delete Resource?</h2><p class="delete-resource-question">This action cannot be undone.</p><div class="delete-resource-name"></div><div class="resource-delete-actions"><button type="button" id="cancelResourceDelete" class="delete-cancel-btn">Cancel</button><button type="button" id="confirmResourceDelete" class="delete-confirm-btn">Delete</button></div></div></div>
+
+<div id="contentEditModal" class="resource-edit-modal" aria-hidden="true"><div class="resource-edit-modal-box" role="dialog" aria-modal="true"><div class="resource-edit-modal-header"><span>CONTENT MANAGEMENT</span><h2 id="contentEditTitle">Edit Content</h2><p>Update the selected item.</p></div><form id="contentEditForm" class="resource-edit-form" novalidate><div class="edit-form-group"><label for="editContentTitle">Title *</label><input id="editContentTitle" type="text"></div><div class="edit-form-group" id="editContentCategoryWrap"><label for="editContentCategory">Category *</label><select id="editContentCategory"></select></div><div class="edit-form-group"><label for="editContentDescription">Description *</label><textarea id="editContentDescription" rows="4"></textarea></div><div class="edit-form-group" id="editContentUrlWrap"><label for="editContentUrl">URL *</label><input id="editContentUrl" type="url"></div><div class="edit-form-group" id="editContentDateWrap"><label for="editContentDate">Date</label><input id="editContentDate" type="date"></div><div class="edit-form-group" id="editContentImageWrap"><label for="editContentImage">Image URL</label><input id="editContentImage" type="url"></div><div class="resource-edit-form-actions"><button type="button" id="cancelContentEdit" class="resource-edit-cancel">Cancel</button><button type="submit" class="resource-edit-save">Save Changes</button></div></form></div></div>
+
+<div id="contentDeleteModal" class="resource-delete-modal" aria-hidden="true"><div class="resource-delete-modal-box" role="dialog" aria-modal="true"><div class="delete-warning-icon">!</div><h2>Delete Item?</h2><p class="delete-resource-question">This action cannot be undone.</p><div id="deleteContentName" class="delete-resource-name"></div><div class="resource-delete-actions"><button type="button" id="cancelContentDelete" class="delete-cancel-btn">Cancel</button><button type="button" id="confirmContentDelete" class="delete-confirm-btn">Delete</button></div></div></div>
+
+<script type="module" src="../js/admin.js"></script>
+</body>
+</html>

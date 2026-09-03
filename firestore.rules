@@ -1,0 +1,118 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // The email check is only used to bootstrap the one known administrator.
+    // After the admin profile exists, normal admin access is role-based.
+    function isBootstrapAdmin(userId) {
+      return signedIn()
+        && request.auth.uid == userId
+        && request.auth.token.email == "dr.omir.ahmed@gmail.com";
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin"
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.email == request.auth.token.email;
+    }
+
+    match /users/{userId} {
+      // Admins can read all profiles; users can read only their own profile.
+      allow read: if isAdmin() || (signedIn() && request.auth.uid == userId);
+
+      // A normal user may create only their own user-role profile.
+      // The known admin email may bootstrap only its own admin profile.
+      allow create: if isAdmin()
+        || (
+          signedIn()
+          && request.auth.uid == userId
+          && request.resource.data.role == "user"
+        )
+        || (
+          isBootstrapAdmin(userId)
+          && request.resource.data.role == "admin"
+          && request.resource.data.email == request.auth.token.email
+        );
+
+      // Nobody can self-promote from user to admin. Admin role changes are also blocked.
+      allow update: if isAdmin()
+        || (
+          signedIn()
+          && request.auth.uid == userId
+          && request.resource.data.role == resource.data.role
+          && request.resource.data.role == "user"
+        )
+        || (
+          isBootstrapAdmin(userId)
+          && resource.data.role == "user"
+          && request.resource.data.role == "admin"
+          && request.resource.data.email == request.auth.token.email
+        );
+
+      allow delete: if isAdmin();
+    }
+
+    // Public educational content is readable by everyone.
+    // Only an authenticated administrator can create, edit or delete it.
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /resources/{resourceId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /videos/{videoId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /certificates/{certificateId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Anonymous site analytics: no account data is stored.
+    // The dashboard can read analytics only as an administrator.
+    match /siteAnalytics/{eventId} {
+      allow create: if request.resource.data.eventType in [
+          "session_start", "page_view", "session_heartbeat", "session_end", "content_open"
+        ]
+        && request.resource.data.sessionId is string
+        && request.resource.data.sessionId.size() >= 10
+        && request.resource.data.sessionId.size() <= 120
+        && request.resource.data.visitorId is string
+        && request.resource.data.visitorId.size() >= 10
+        && request.resource.data.visitorId.size() <= 120
+        && request.resource.data.page is string
+        && request.resource.data.page.size() <= 120
+        && request.resource.data.createdAt == request.time;
+
+      allow read: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    // Users can write only their own activity records.
+    // Only admins can read or manage activity records globally.
+    match /activities/{activityId} {
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid;
+
+      allow read: if isAdmin()
+        || (
+          signedIn()
+          && resource.data.uid == request.auth.uid
+        );
+
+      allow update, delete: if isAdmin();
+    }
+  }
+}
